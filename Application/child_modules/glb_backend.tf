@@ -66,7 +66,7 @@ resource "google_compute_firewall" "nginx_firewall" {
 }
 
 resource "google_compute_region_autoscaler" "nginx_instance_group_autoscaler" {
-  name = var.nginx_instance_group_autoscaler_name
+  name = var.instance_group_autoscaler_name
   target = google_compute_region_instance_group_manager.nginx_instance_group.id
   autoscaling_policy {
     max_replicas = 3
