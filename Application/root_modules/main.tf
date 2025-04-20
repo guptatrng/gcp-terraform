@@ -14,5 +14,5 @@ module "nginx_app" {
     instance_template_name = var.instance_template_name
     firewall_name = var.firewall_name
     instance_group_autoscaler_name = var.instance_group_autoscaler_name
-    backend_service_name = var.backend_service_name
+    base_instance_name = var.base_instance_name
 }
