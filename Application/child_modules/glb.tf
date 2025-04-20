@@ -17,25 +17,23 @@ resource "google_compute_target_http_proxy" "nginx_target_http_proxy" {
 
 resource "google_compute_url_map" "nginx_url_map" {
   name = var.url_map_name
-  default_service = google_compute_region_backend_service.nginx_backend_service.id
+  default_service = google_compute_backend_service.nginx_backend_service.id
 }
 
-resource "google_compute_region_backend_service" "nginx_backend_service" {
+resource "google_compute_backend_service" "nginx_backend_service" {
   name = var.backend_service_name
-  region = var.region
   protocol = "HTTP"
   load_balancing_scheme = "EXTERNAL_MANAGED"
   port_name = "http-port"
-  health_checks = [ google_compute_region_health_check.nginx_health_check.id ]
+  health_checks = [ google_compute_health_check.nginx_health_check.id ]
   backend {
-    group = google_compute_region_instance_group_manager.nginx_instance_group.instance_group
+    group = google_compute_instance_group_manager.nginx_instance_group.instance_group
     capacity_scaler = 1.0
   }
 }
 
-resource "google_compute_region_health_check" "nginx_health_check" {
+resource "google_compute_health_check" "nginx_health_check" {
   name = var.health_check_name
-  region = var.region
   http_health_check {
     port_specification = "USE_SERVING_PORT"
   }
