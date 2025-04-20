@@ -29,7 +29,8 @@ resource "google_compute_region_backend_service" "nginx_backend_service" {
   health_checks = [ google_compute_region_health_check.nginx_health_check.id ]
   backend {
     group = google_compute_region_instance_group_manager.nginx_instance_group.instance_group
-    balancing_mode = "UTILIZATION"
+    balancing_mode  = "UTILIZATION"
+    capacity_scaler = 1.0
   }
 }
 
