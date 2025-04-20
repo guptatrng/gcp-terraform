@@ -35,6 +35,7 @@ resource "google_compute_region_backend_service" "nginx_backend_service" {
 
 resource "google_compute_region_health_check" "nginx_health_check" {
   name = var.health_check_name
+  region = var.region
   http_health_check {
     port_specification = "USE_SERVING_PORT"
   }
