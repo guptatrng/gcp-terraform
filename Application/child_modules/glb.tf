@@ -18,11 +18,12 @@ resource "google_compute_target_http_proxy" "nginx_target_http_proxy" {
 
 resource "google_compute_url_map" "nginx_url_map" {
   name = var.url_map_name
-  default_service = google_compute_backend_service.nginx_backend_service.id
+  default_service = google_compute_region_backend_service.nginx_backend_service.id
 }
 
-resource "google_compute_backend_service" "nginx_backend_service" {
+resource "google_compute_region_backend_service" "nginx_backend_service" {
   name = var.backend_service_name
+  region = var.region
   protocol = "HTTP"
   load_balancing_scheme = "EXTERNAL"
   port_name = "http-port"
