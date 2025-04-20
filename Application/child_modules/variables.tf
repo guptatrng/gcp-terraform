@@ -2,6 +2,10 @@ variable "project" {
   description = "GCP project name"
 }
 
+variable "region" {
+  description = "GCP region name"
+}
+
 variable "network" {
   description = "Network id for deployment"
 }
@@ -28,6 +32,10 @@ variable "url_map_name" {
 
 variable "backend_service_name" {
   description = "Name of backend service"
+}
+
+variable "base_instance_name" {
+  description = "Name of base instance"
 }
 
 variable "health_check_name" {

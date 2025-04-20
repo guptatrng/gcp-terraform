@@ -1,6 +1,7 @@
 module "nginx_app" {
     source = "git::https://github.com/guptatrng/gcp-terraform.git//Application/child_modules?ref=main"
     project = var.project
+    region = var.region
     network = var.network
     subnetwork = var.subnetwork
     global_address_name = var.global_address_name
@@ -13,4 +14,5 @@ module "nginx_app" {
     instance_template_name = var.instance_template_name
     firewall_name = var.firewall_name
     instance_group_autoscaler_name = var.instance_group_autoscaler_name
+    backend_service_name = var.backend_service_name
 }

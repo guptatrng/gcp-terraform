@@ -1,5 +1,7 @@
 project = "kubernetes-test-456013"
 
+region = "us-west1"
+
 network = "guptaji-tech-network"
 
 subnetwork = "guptaji-tech-subnet"
@@ -13,6 +15,8 @@ global_target_http_proxy_name = "nginx-dev-global-target-http-proxy-dev"
 url_map_name= "nginx-url-map-dev"
 
 backend_service_name = "nginx-backend-service-dev"
+
+base_instance_name = "nginx-instance-dev"
 
 health_check_name = "nginx-health-check-dev"
 

@@ -1,7 +1,7 @@
 resource "google_compute_region_instance_group_manager" "nginx_instance_group" {
   name = var.region_instance_group_manager_name
-  base_instance_name = "nginx-instance"
-  region = us-west1
+  base_instance_name = var.base_instance_name
+  region = var.region
   target_size = 2
   version {
     name = "nginx-instance-template-v1"
