@@ -27,7 +27,7 @@ resource "google_compute_backend_service" "nginx_backend_service" {
   port_name = "http-port"
   health_checks = [ google_compute_health_check.nginx_health_check.id ]
   backend {
-    group = google_compute_instance_group_manager.nginx_instance_group.instance_group
+    group = google_compute_region_instance_group_manager.nginx_instance_group.instance_group
     capacity_scaler = 1.0
   }
 }
