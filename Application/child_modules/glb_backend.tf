@@ -24,6 +24,7 @@ resource "google_compute_instance_template" "nginx-instance-template" {
   network_interface {
     network = var.network
     subnetwork = var.subnetwork
+    region = var.region
   }
 
 
