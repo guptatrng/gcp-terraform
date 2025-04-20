@@ -24,7 +24,7 @@ resource "google_compute_region_backend_service" "nginx_backend_service" {
   name = var.backend_service_name
   region = var.region
   protocol = "HTTP"
-  load_balancing_scheme = "EXTERNAL"
+  load_balancing_scheme = "EXTERNAL_MANAGED"
   port_name = "http-port"
   health_checks = [ google_compute_region_health_check.nginx_health_check.id ]
   backend {
