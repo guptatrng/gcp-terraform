@@ -15,7 +15,7 @@ resource "google_compute_region_instance_group_manager" "nginx_instance_group" {
 
 resource "google_compute_region_instance_template" "nginx-instance-template" {
   name = var.instance_template_name
-  machine_type = "n1-standard"
+  machine_type = "n1-standard-1"
   region = var.region
   disk {
     source_image = "debian-cloud/debian-12"
