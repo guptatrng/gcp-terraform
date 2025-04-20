@@ -24,7 +24,7 @@ resource "google_compute_instance_template" "nginx-instance-template" {
   tags = [ "allow-health-checks" ]
   network_interface {
     network = var.network
-    subnetwork =var.subnetwork
+    subnetwork = var.subnetwork
   }
 
 
