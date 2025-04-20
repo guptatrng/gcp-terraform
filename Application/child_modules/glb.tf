@@ -5,14 +5,13 @@ resource "google_compute_global_address" "nginx_external_ip" {
 resource "google_compute_global_forwarding_rule" "nginx_global_forwarding_rule" {
   name = var.global_forwarding_rule_name
   ip_address = google_compute_global_address.nginx_external_ip.id
-  target = google_compute_region_target_http_proxy.nginx_target_http_proxy.id
+  target = google_compute_target_http_proxy.nginx_target_http_proxy.id
   load_balancing_scheme = "EXTERNAL_MANAGED"
   port_range = "80"
 }
 
-resource "google_compute_region_target_http_proxy" "nginx_target_http_proxy" {
+resource "google_compute_target_http_proxy" "nginx_target_http_proxy" {
   name = var.global_target_http_proxy_name
-  region = var.region
   url_map = google_compute_region_url_map.nginx_url_map.id
 }
 
