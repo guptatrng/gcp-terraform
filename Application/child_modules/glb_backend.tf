@@ -63,7 +63,7 @@ resource "google_compute_firewall" "nginx_firewall" {
     target_tags = [ "allow-health-checks" ]  
 }
 
-resource "google_compute_autoscaler" "nginx_instance_group_autoscaler" {
+resource "google_compute_region_autoscaler" "nginx_instance_group_autoscaler" {
   name = var.instance_group_autoscaler_name
   region = var.region
   target = google_compute_region_instance_group_manager.nginx_instance_group.id
