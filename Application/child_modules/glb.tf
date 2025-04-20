@@ -8,7 +8,6 @@ resource "google_compute_global_forwarding_rule" "nginx_global_forwarding_rule" 
   target = google_compute_target_http_proxy.nginx_target_http_proxy.id
   load_balancing_scheme = "EXTERNAL"
   port_range = "80"
-  ip_protocol = "HTTP"
 }
 
 resource "google_compute_target_http_proxy" "nginx_target_http_proxy" {
