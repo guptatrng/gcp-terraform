@@ -1,10 +1,9 @@
-resource "google_compute_region_instance_group_manager" "nginx_instance_group" {
+resource "google_compute_instance_group_manager" "nginx_instance_group" {
   name = var.region_instance_group_manager_name
   base_instance_name = var.base_instance_name
-  region = var.region
   version {
     name = "nginx-instance-template-v1"
-    instance_template = google_compute_region_instance_template.nginx-instance-template.id
+    instance_template = google_compute_instance_template.nginx-instance-template.id
   }
   named_port {
     name = "http-port"
@@ -12,10 +11,9 @@ resource "google_compute_region_instance_group_manager" "nginx_instance_group" {
   }
 }
 
-resource "google_compute_region_instance_template" "nginx-instance-template" {
+resource "google_compute_instance_template" "nginx-instance-template" {
   name = var.instance_template_name
   machine_type = "n1-standard-1"
-  region = var.region
   disk {
     source_image = "debian-cloud/debian-12"
     auto_delete  = true
@@ -24,7 +22,6 @@ resource "google_compute_region_instance_template" "nginx-instance-template" {
   tags = [ "allow-health-checks" ]
   network_interface {
     network = var.network
-    subnetwork = var.subnetwork
   }
 
 
@@ -65,10 +62,9 @@ resource "google_compute_firewall" "nginx_firewall" {
     target_tags = [ "allow-health-checks" ]  
 }
 
-resource "google_compute_region_autoscaler" "nginx_instance_group_autoscaler" {
+resource "google_compute_autoscaler" "nginx_instance_group_autoscaler" {
   name = var.instance_group_autoscaler_name
-  target = google_compute_region_instance_group_manager.nginx_instance_group.id
-  region = var.region
+  target = google_compute_instance_group_manager.nginx_instance_group.id
   autoscaling_policy {
     max_replicas = 3
     min_replicas = 1
