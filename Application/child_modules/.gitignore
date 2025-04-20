@@ -1,0 +1,36 @@
+# Local .terraform directories
+**/.terraform/
+.terraform/
+./gce_instance/.terraform/
+
+# Terraform plan files
+*.tfplan
+./gce_instance/*.tfplan
+
+# State files
+*.tfstate
+*.tfstate.*
+./gce_instance/*.tfstate
+./gce_instance/*.tfstate.*
+
+# Crash logs
+crash.log
+./gce_instance/crash.log
+
+# Override files (typically used for local dev only)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform lock file (optional, include if not using provider version pinning)
+.terraform.lock.hcl
+./gce_instance/.terraform.lock.hcl
+
+# IDE/editor folders
+.vscode/
+.idea/
+*.swp
+
+# MacOS
+.DS_Store
