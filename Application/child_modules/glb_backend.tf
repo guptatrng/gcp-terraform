@@ -5,7 +5,7 @@ resource "google_compute_region_instance_group_manager" "nginx_instance_group" {
   target_size = 2
   version {
     name = "nginx-instance-template-v1"
-    instance_template = google_compute_instance_template.nginx-instance-template.id
+    instance_template = google_compute_region_instance_template.nginx-instance-template.id
   }
   named_port {
     name = "http-port"
@@ -13,9 +13,10 @@ resource "google_compute_region_instance_group_manager" "nginx_instance_group" {
   }
 }
 
-resource "google_compute_instance_template" "nginx-instance-template" {
+resource "google_compute_region_instance_template" "nginx-instance-template" {
   name = var.instance_template_name
   machine_type = "n1-standard"
+  region = var.region
   disk {
     source_image = "debian-cloud/debian-12"
     auto_delete  = true
